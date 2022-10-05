@@ -9,10 +9,8 @@
 </head>
 
 <body>
-  hello world
-  <div id="received-message"></div>
   <script>
-    window.onmessage = function (e) {
+    document.addEventListener("message", function (e) {
       var payload = JSON.parse(e.data);
       if (payload.method === 'set') {
         localStorage.setItem(payload.key, payload.data);
@@ -22,7 +20,7 @@
         var stored = localStorage.getItem(payload.key);
         parent.postMessage(JSON.stringify(stored))
       }
-    }
+    })
   </script>
 </body>
 
