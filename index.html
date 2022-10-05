@@ -10,6 +10,7 @@
 
 <body>
   <script>
+    console.log('*************************************');
     document.addEventListener("message", function (e) {
       var payload = JSON.parse(e.data);
       if (payload.method === 'set') {
@@ -18,6 +19,8 @@
 
       if (payload.method === 'get') {
         var stored = localStorage.getItem(payload.key);
+
+        console.log(parent);
         parent.postMessage(JSON.stringify(stored))
       }
     })
